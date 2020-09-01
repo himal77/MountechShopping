@@ -1,19 +1,19 @@
 # MountechShopping
 E-Commerce website
 
-#Front-End
+# Front-End
 html 
 css
 javascript
 bootstrap
 
-#Back-End
+# Back-End
 java
 servlet
 jsp
 
-#Database connection
+# Database connection
 Hibernate
 
-#Download link
+# Download link
 https://github.com/himal77/MountechShopping
