@@ -1,6 +1,9 @@
 # MountechShopping
 E-Commerce website
 
+# Software
+IntellijIdea, Tomcat, mysql, Datagrip
+
 # Front-End
 html 
 css
