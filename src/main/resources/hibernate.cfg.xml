@@ -18,5 +18,8 @@
         <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
+        <mapping class="com.mountech.mycart.entities.Category"/>
+        <mapping class="com.mountech.mycart.entities.User"/>
+        <mapping class="com.mountech.mycart.entities.Product"/>
     </session-factory>
 </hibernate-configuration>
