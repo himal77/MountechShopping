@@ -6,6 +6,8 @@
 </head>
 
 <body>
+<%@include file="components/navbar.jsp"%>
+
 <h2>Hello World!</h2>
 <h1>Creating session factory object</h1>
 <%

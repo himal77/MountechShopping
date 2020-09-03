@@ -12,6 +12,7 @@
     <%@include file="components/common_css_js.jsp"%>
 </head>
 <body>
+<%@include file="components/navbar.jsp"%>
 About Page
 </body>
 </html>
