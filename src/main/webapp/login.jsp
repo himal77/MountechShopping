@@ -1,14 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: puri
-  Date: 9/3/20
-  Time: 12:00 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>New User Registraion</title>
+    <title>Login</title>
     <%@include file="components/common_css_js.jsp" %>
 </head>
 <body>
@@ -18,13 +12,8 @@
     <div class="col-md-4 offset-md-4">
         <div class="card">
             <div class="card-body px-5" style="background-color:#BBDEFB">
-                <h3 class="text-center my-3">Sign up here</h3>
+                <h3 class="text-center my-3">Login</h3>
                 <form >
-                    <div class="form-group">
-                        <label for="name">User Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter username"
-                               aria-describedby="emailHelp">
-                    </div>
                     <div class="form-group">
                         <label for="email">User Email</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter user mail "
@@ -36,23 +25,10 @@
                         <input type="password" class="form-control" id="password" placeholder="Enter user password" "
                         aria-describedby="emailHelp">
                     </div>
-
-                    <div class="form-group">
-                        <label for="phone">User number</label>
-                        <input type="number" class="form-control" id="phone" placeholder="Enter user password" "
-                        aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">User address</label>
-                        <textarea style="height: 100px" class="form-control" id="address"
-                                  placeholder="Enter your address"></textarea>
-                    </div>
-
                     <div class="container text-center">
-                        <button class="btn btn-outline-success">Register</button>
+                        <button class="btn btn-outline-success">Login</button>
                         <button class="btn btn-outline-warning">Reset</button>
                     </div>
-
                 </form>
             </div>
         </div>
