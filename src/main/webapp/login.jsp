@@ -7,8 +7,8 @@
 </head>
 <body>
 <%@include file="components/navbar.jsp" %>
-
-<div class="row mt-5">
+<div class="container-fluid">
+<div class="row mt-3">
     <div class="col-md-4 offset-md-4">
         <div class="card">
             <div class="card-body px-5" style="background-color:#BBDEFB">
@@ -33,6 +33,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 </body>
