@@ -13,16 +13,16 @@
         <div class="card">
             <div class="card-body px-5" style="background-color:#BBDEFB">
                 <h3 class="text-center my-3">Login</h3>
-                <form >
+                <form action="LoginServlet" method="post">
                     <div class="form-group">
                         <label for="email">User Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter user mail "
+                        <input name="user_email" type="email" class="form-control" id="email" placeholder="Enter user mail "
                                aria-describedby="emailHelp">
                     </div>
 
                     <div class="form-group">
                         <label for="password">User Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter user password" "
+                        <input name="user_password" type="password" class="form-control" id="password" placeholder="Enter user password" "
                         aria-describedby="emailHelp">
                     </div>
                     <div class="container text-center">
