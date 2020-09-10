@@ -11,6 +11,7 @@
 <div class="row mt-3">
     <div class="col-md-4 offset-md-4">
         <div class="card">
+            <%@include file="components/message.jsp"%>
             <div class="card-body px-5" style="background-color:#BBDEFB">
                 <h3 class="text-center my-3">Login</h3>
                 <form action="LoginServlet" method="post">

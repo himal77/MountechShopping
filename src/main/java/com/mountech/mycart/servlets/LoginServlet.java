@@ -1,5 +1,6 @@
 package com.mountech.mycart.servlets;
 
+import com.mountech.mycart.dao.UserDAO;
 import com.mountech.mycart.entities.User;
 import com.mountech.mycart.helper.FactoryProvider;
 import org.hibernate.Session;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,7 @@ public class LoginServlet extends HttpServlet {
         try {
             String userEmail = request.getParameter("user_email");
             String userPassword = request.getParameter("user_password");
-
-            System.out.println( validateLogin(userEmail, userPassword));
+            validateLogin(userEmail, userPassword, request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,19 +34,16 @@ public class LoginServlet extends HttpServlet {
 
     }
 
-    public boolean validateLogin(String userEmail, String userPassword){
-        String email = null, name = null;
-        SessionFactory sessionFactory = FactoryProvider.getFactory();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        List<User> userList = (List<User>) session.createQuery("FROM User").list();
-        for(User u: userList){
-            if(u.getUserEmail().equals(userEmail) && u.getUserPassword().equals(userPassword) && u.getUserType().equals("Normal")){
-                return true;
-            }
+    public void validateLogin(String userEmail, String userPassword, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = new UserDAO(FactoryProvider.getFactory()).getUserByEmailAndPassword(userEmail, userPassword);
+        HttpSession httpSession = request.getSession();
+        if(user != null){
+                httpSession.setAttribute("message", "Successfully Login");
+                response.sendRedirect("login.jsp");
+                return;
         }
-        transaction.commit();
-        session.close();
-        return false;
+        httpSession.setAttribute("message", "login failed");
+        response.sendRedirect("login.jsp");
+        return;
     }
 }
