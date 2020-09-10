@@ -5,6 +5,7 @@ import com.mountech.mycart.helper.FactoryProvider;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class RegisterServlet extends javax.servlet.http.HttpServlet {
@@ -19,7 +20,11 @@ public class RegisterServlet extends javax.servlet.http.HttpServlet {
             // if i want i can validate data here?
 
             User user = new User(userName, userEmail, userPassword, userPhone, userAddress, "default.jpg","Normal");
-            registerUser(user);
+            int userId = registerUser(user);
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("message", "Registration successful !! " + userId);
+            response.sendRedirect("register.jsp");
+            return;
 
         } catch (Exception e) {
             e.printStackTrace();
