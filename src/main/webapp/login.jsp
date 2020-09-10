@@ -27,8 +27,8 @@
                         aria-describedby="emailHelp">
                     </div>
                     <div class="container text-center">
-                        <button class="btn btn-outline-success">Login</button>
-                        <button class="btn btn-outline-warning">Reset</button>
+                        <button type="submit" class="btn btn-outline-success">Login</button>
+                        <button type="reset" class="btn btn-outline-warning">Reset</button>
                     </div>
                 </form>
             </div>

@@ -37,13 +37,21 @@ public class LoginServlet extends HttpServlet {
     public void validateLogin(String userEmail, String userPassword, HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = new UserDAO(FactoryProvider.getFactory()).getUserByEmailAndPassword(userEmail, userPassword);
         HttpSession httpSession = request.getSession();
-        if(user != null){
-                httpSession.setAttribute("message", "Successfully Login");
-                response.sendRedirect("login.jsp");
-                return;
+        if(user == null){
+            httpSession.setAttribute("message", "Invalid Email or Password! Try again");
+            response.sendRedirect("login.jsp");
+            return;
         }
-        httpSession.setAttribute("message", "login failed");
-        response.sendRedirect("login.jsp");
-        return;
+
+        //login
+        httpSession.setAttribute("current-user", user);
+        if (user.getUserType().equals("admin")) {
+            // admin: admin.jsp
+            response.sendRedirect("admin.jsp");
+        } else if (user.getUserType().equals("normal")) {
+            // normal: normal.jsp
+            System.out.println("it is correct");
+            response.sendRedirect("normal.jsp");
+        }
     }
 }

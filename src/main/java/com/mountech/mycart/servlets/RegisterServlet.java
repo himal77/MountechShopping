@@ -19,7 +19,7 @@ public class RegisterServlet extends javax.servlet.http.HttpServlet {
 
             // if i want i can validate data here?
 
-            User user = new User(userName, userEmail, userPassword, userPhone, userAddress, "default.jpg","Normal");
+            User user = new User(userName, userEmail, userPassword, userPhone, userAddress, "default.jpg","normal");
             int userId = registerUser(user);
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("message", "Registration successful !! " + userId);
