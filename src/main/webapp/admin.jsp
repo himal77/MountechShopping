@@ -30,8 +30,7 @@
 <body>
 <%@include file="components/navbar.jsp" %>
 
-<div class="container">
-
+<div class="container admin">
     <%--Upper row--%>
     <div class="row mt-3">
         <%--First col--%>
@@ -78,10 +77,10 @@
     </div>
 
     <%--Lower Row--%>
-    <div class="row">
+    <div class="row mt-3">
         <%--first col--%>
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" data-toggle="modal" data-target="#add-category-modal">
                 <div class="card-body text-center">
                     <div class="container">
                         <img style="max-width: 100px;" class="img-fluid rounded-circle" src="image/categoryPlus.png"/>
@@ -102,10 +101,38 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
+<%--Start Modal--%>
+<div class="modal fade" id="add-category-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header custom-bg text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Fill Category Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="catTitle" placeholder="Enter category title" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Enter category description" class="form-control" style="height: 250px;">
+                        </textarea>
+                    </div>
+                    <div class="container text-center">
+                        <button class="btn btn-success" type="submit">Add Category</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%--Ended Modal--%>
 </body>
 </html>
 
