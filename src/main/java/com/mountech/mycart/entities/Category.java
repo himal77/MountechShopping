@@ -19,6 +19,11 @@ public class Category {
     public Category() {
     }
 
+    public Category(String categoryName, String categoryDescription) {
+        this.categoryName = categoryName;
+        this.categoryDescription = categoryDescription;
+    }
+
 
     public Category(String categoryName, String categoryDescription, List<Product> productList) {
         this.categoryName = categoryName;

@@ -31,6 +31,9 @@
 <%@include file="components/navbar.jsp" %>
 
 <div class="container admin">
+    <div class="container-fluid">
+        <%@include file="components/message.jsp"%>
+    </div>
     <%--Upper row--%>
     <div class="row mt-3">
         <%--First col--%>
@@ -92,7 +95,7 @@
 
         <%--Second col--%>
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" data-toggle="modal" data-target="#productModal">
                 <div class="card-body text-center">
                     <div class="container">
                         <img src="image/productPlus.png" style="max-width: 100px;" class="rounded-circle img-fluid"/>
@@ -115,12 +118,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#">
+                <form action="ProductOperationServlet" method="post">
+                    <input type="hidden" name="operation" value="addCategory">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="catTitle" placeholder="Enter category title" required>
+                        <input type="text" class="form-control" name="catTitle" placeholder="Enter category title"
+                               required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Enter category description" class="form-control" style="height: 250px;">
+                        <textarea placeholder="Enter category description" class="form-control" name="catDisc" style="height: 250px;">
                         </textarea>
                     </div>
                     <div class="container text-center">
@@ -133,6 +138,34 @@
     </div>
 </div>
 <%--Ended Modal--%>
+
+<%--Modal for add product--%>
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel">Fill Product detail</h5>
+            </div>
+            <div class="modal-body">
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="addProduct" required placeholder="Enter the product name">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="productDisc" class="form-control" style="height: 200px;"
+                                  placeholder="Enter the description"></textarea>
+                    </div>
+                    <div class="container text-center">
+                        <button type="button" class="btn btn-primary">Add</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%--Modal ended--%>
 </body>
 </html>
 
