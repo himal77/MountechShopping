@@ -1,4 +1,8 @@
 <%@ page import="com.mountech.mycart.entities.User" %>
+<%@ page import="com.mountech.mycart.entities.Category" %>
+<%@ page import="com.mountech.mycart.dao.CategoryDAO" %>
+<%@ page import="com.mountech.mycart.helper.FactoryProvider" %>
+<%@ page import="java.util.List" %>
 <%
     User user = (User) session.getAttribute("current-user");
 
@@ -32,7 +36,7 @@
 
 <div class="container admin">
     <div class="container-fluid">
-        <%@include file="components/message.jsp"%>
+        <%@include file="components/message.jsp" %>
     </div>
     <%--Upper row--%>
     <div class="row mt-3">
@@ -125,8 +129,8 @@
                                required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Enter category description" class="form-control" name="catDisc" style="height: 250px;">
-                        </textarea>
+                        <textarea placeholder="Enter category description" class="form-control" name="catDisc"
+                                  style="height: 250px;"></textarea>
                     </div>
                     <div class="container text-center">
                         <button class="btn btn-success" type="submit">Add Category</button>
@@ -147,15 +151,50 @@
                 <h5 class="modal-title" id="exampleModalLabel">Fill Product detail</h5>
             </div>
             <div class="modal-body">
-                <form action="#">
+                <form action="ProductOperationServlet" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="addProduct">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="addProduct" required placeholder="Enter the product name">
+                        <input type="text" class="form-control" name="pName" required
+                               placeholder="Enter the product name" ht>
                     </div>
-
                     <div class="form-group">
-                        <textarea name="productDisc" class="form-control" style="height: 200px;"
+                        <input type="number" class="form-control" name="pPrice" required
+                               placeholder="Enter the product price">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="pDiscount" required
+                               placeholder="Enter the product discount">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="pQuantity" required
+                               placeholder="Enter the product Quantity">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="pDesc" class="form-control" style="height: 200px;"
                                   placeholder="Enter the description"></textarea>
                     </div>
+
+                    <%--Products category--%>
+                    <%
+                        CategoryDAO categoryDAO = new CategoryDAO(FactoryProvider.getFactory());
+                        List<Category> categoryList = categoryDAO.getCategoryList();
+                    %>
+                    <div>
+                        <label for="cat">Enter the category</label>
+                        <select name="catId" class="form-control" id="cat">
+                            <% for (Category c : categoryList) { %>
+                            <option value=" <%=c.getCategoryId()%> "> <%=c.getCategoryName()%>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+
+                    <%--product photo--%>
+                    <div class="form-group text-center">
+                        <label for="pId">select pic of product</label><br>
+                        <input type="file" name="pPhoto" id="pId" required/>
+                    </div>
+
                     <div class="container text-center">
                         <button type="button" class="btn btn-primary">Add</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

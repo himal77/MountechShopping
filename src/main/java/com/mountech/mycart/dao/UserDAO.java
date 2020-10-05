@@ -23,8 +23,8 @@ public class UserDAO {
             Query q = session.createQuery(query);
             q.setParameter("p", password);
             q.setParameter("e", email);
-
             user = (User) q.uniqueResult();
+            session.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

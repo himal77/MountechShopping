@@ -12,8 +12,8 @@ public class Product {
     @Column(length = 3000)
     private String pDesc;
     private String pPhoto;
-    private int pDiscount;
-    private int pPrice;
+    private double pDiscount;
+    private double pPrice;
     private int pQuantity;
 
     @ManyToOne
@@ -23,18 +23,7 @@ public class Product {
     }
 
 
-    public Product(String pName, String pDesc, String pPhoto, int pDiscount, int pPrice, int pQuantity, Category category) {
-        this.pName = pName;
-        this.pDesc = pDesc;
-        this.pPhoto = pPhoto;
-        this.pDiscount = pDiscount;
-        this.pPrice = pPrice;
-        this.pQuantity = pQuantity;
-        this.category = category;
-    }
-
-    public Product(int pId, String pName, String pDesc, String pPhoto, int pDiscount, int pPrice, int pQuantity, Category category) {
-        this.pId = pId;
+    public Product(String pName, String pDesc, String pPhoto, double pDiscount, double pPrice, int pQuantity, Category category) {
         this.pName = pName;
         this.pDesc = pDesc;
         this.pPhoto = pPhoto;
@@ -46,10 +35,6 @@ public class Product {
 
     public int getpId() {
         return pId;
-    }
-
-    public void setpId(int pId) {
-        this.pId = pId;
     }
 
     public String getpName() {
@@ -76,19 +61,19 @@ public class Product {
         this.pPhoto = pPhoto;
     }
 
-    public int getpDiscount() {
+    public double getpDiscount() {
         return pDiscount;
     }
 
-    public void setpDiscount(int pDiscount) {
+    public void setpDiscount(double pDiscount) {
         this.pDiscount = pDiscount;
     }
 
-    public int getpPrice() {
+    public double getpPrice() {
         return pPrice;
     }
 
-    public void setpPrice(int pPrice) {
+    public void setpPrice(double pPrice) {
         this.pPrice = pPrice;
     }
 
