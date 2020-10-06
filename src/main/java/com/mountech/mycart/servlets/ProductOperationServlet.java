@@ -65,8 +65,8 @@ public class ProductOperationServlet extends HttpServlet {
             // Uploading picture
             try {
 
-                String path = request.getRealPath("image") + File.pathSeparator + "products" + File.pathSeparator + pPhoto.getSubmittedFileName();
-
+                String path = request.getRealPath("image") + File.separatorChar + "products" + File.separatorChar + pPhoto.getSubmittedFileName();
+                System.out.println(path);
                 FileOutputStream fos = new FileOutputStream(path);
                 InputStream fis = pPhoto.getInputStream();
 
