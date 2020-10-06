@@ -31,9 +31,8 @@ public class CategoryDAO {
 
     public Category getCategory(int categoryId ) {
         Session session = factory.openSession();
-        Query query = session.createQuery("from Category WHERE categoryId = ?");
-        query.setParameter(0,  categoryId);
-        Category category = (Category) query.getParameter(0);
+        Category category = session.get(Category.class, categoryId);
+        session.close();
         return category;
     }
 

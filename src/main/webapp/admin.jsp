@@ -151,24 +151,29 @@
                 <h5 class="modal-title" id="exampleModalLabel">Fill Product detail</h5>
             </div>
             <div class="modal-body">
-                <form action="ProductOperationServlet" enctype="multipart/form-data">
+                <form action="ProductOperationServlet" enctype="multipart/form-data" method="post">
                     <input type="hidden" name="operation" value="addProduct">
+
                     <div class="form-group">
                         <input type="text" class="form-control" name="pName" required
                                placeholder="Enter the product name" ht>
                     </div>
+
                     <div class="form-group">
                         <input type="number" class="form-control" name="pPrice" required
                                placeholder="Enter the product price">
                     </div>
+
                     <div class="form-group">
                         <input type="number" class="form-control" name="pDiscount" required
                                placeholder="Enter the product discount">
                     </div>
+
                     <div class="form-group">
                         <input type="number" class="form-control" name="pQuantity" required
                                placeholder="Enter the product Quantity">
                     </div>
+
                     <div class="form-group">
                         <textarea name="pDesc" class="form-control" style="height: 200px;"
                                   placeholder="Enter the description"></textarea>
@@ -183,7 +188,7 @@
                         <label for="cat">Enter the category</label>
                         <select name="catId" class="form-control" id="cat">
                             <% for (Category c : categoryList) { %>
-                            <option value=" <%=c.getCategoryId()%> "> <%=c.getCategoryName()%>
+                            <option value="<%=c.getCategoryId()%>"><%=c.getCategoryName()%>
                             </option>
                             <% } %>
                         </select>
@@ -196,7 +201,7 @@
                     </div>
 
                     <div class="container text-center">
-                        <button type="button" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </form>

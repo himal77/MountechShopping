@@ -18,6 +18,7 @@ public class ProductDAO {
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
         int id = (int) session.save(product);
+        tx.commit();
         session.close();
         return id;
     }
