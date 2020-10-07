@@ -87,5 +87,6 @@
 
     </div>
 </div>
+<%@include file="components/common_modals.jsp"%>
 </body>
 </html>

@@ -31,6 +31,11 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!" data-toggle = "modal" data-target="#cart"><i class="fa fa-cart-plus ml-2" style="font-size: 20px"><span class="mr-2 cart-item">(0)</span></i></a>
+                </li>
+
                 <% if (user1 == null) { %>
                     <li class="nav-item active">
                         <a class="nav-link" href="login.jsp">Login</a>
