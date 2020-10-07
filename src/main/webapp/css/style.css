@@ -17,6 +17,11 @@
 }
 
 .discount-label {
-    font-size: 7px !important;
+    font-size: 10px !important;
     font-style: italic !important;
+}
+
+.product-card:hover {
+    background: #e2e2e2;
+    cursor: pointer;
 }

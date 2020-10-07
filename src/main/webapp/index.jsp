@@ -58,7 +58,7 @@
 
                         <%--Traversing products--%>
                         <%for (Product p : productList) {%>
-                        <div class="card">
+                        <div class="card product-card">
                             <div class="container text-center">
                                 <img src="image/products/<%=p.getpPhoto()%>" style="height: 150px; width: 200px;"
                                      class="card-img-top m-2" alt="...">
@@ -71,7 +71,7 @@
 
                             </div>
                             <div class="card-footer text-center">
-                                <button class="btn custom-bg text-white">Add to cart</button>
+                                <button class="btn custom-bg text-white" onclick="add_to_cart(<%=p.getpId()%>, '<%=p.getpName()%>', <%=p.getPriceAfterDiscount()%>)">Add to cart</button>
                                 <button class="btn btn-outline-primary">&#8377;<%=p.getPriceAfterDiscount()%>
                                     <span class="discount-label text-secondary"><%=p.getpDiscount()%>% off</span>
                                     <span> <%=p.getpPrice()%></span>
