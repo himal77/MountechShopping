@@ -106,4 +106,9 @@ public class Product {
                 ", category=" + category +
                 '}';
     }
+
+    // Calculate price after discount
+    public double getPriceAfterDiscount() {
+        return getpPrice() - ((getpDiscount() * getpPrice()) / 100.0);
+    }
 }

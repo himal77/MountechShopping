@@ -15,3 +15,8 @@
     background: #673ab7!important;
     border-color: darkred;
 }
+
+.discount-label {
+    font-size: 7px !important;
+    font-style: italic !important;
+}

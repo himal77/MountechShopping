@@ -55,6 +55,7 @@
                         <%if (productList.size() == 0) {%>
                         No item
                         <%}%>
+
                         <%--Traversing products--%>
                         <%for (Product p : productList) {%>
                         <div class="card">
@@ -71,7 +72,9 @@
                             </div>
                             <div class="card-footer text-center">
                                 <button class="btn custom-bg text-white">Add to cart</button>
-                                <button class="btn btn-outline-primary">&#8377;<%=p.getpPrice()%>
+                                <button class="btn btn-outline-primary">&#8377;<%=p.getPriceAfterDiscount()%>
+                                    <span class="discount-label text-secondary"><%=p.getpDiscount()%>% off</span>
+                                    <span> <%=p.getpPrice()%></span>
                                 </button>
                             </div>
                         </div>

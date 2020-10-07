@@ -35,7 +35,7 @@
 <%@include file="components/navbar.jsp" %>
 
 <div class="container admin">
-    <div class="container-fluid">
+    <div class="container-fluid text-center">
         <%@include file="components/message.jsp" %>
     </div>
     <%--Upper row--%>
