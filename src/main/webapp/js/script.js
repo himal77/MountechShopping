@@ -37,7 +37,7 @@ function add_to_cart(pid, pname, price) {
             console.log("Prodcut is added");
         }
     }
-updateCart();
+    updateCart();
 }
 
 /*
@@ -57,7 +57,7 @@ function updateCart() {
         console.log(cart);
         $(".cart-item").html(`(${cart.length})`);
 
-        let table=`
+        let table = `
         <table class='table'>
         <thead class='thread-light'>
         <tr>
@@ -69,24 +69,43 @@ function updateCart() {
         </tr>
         </thead>
         `;
-        cart.map((item)=>{
+        let total = 0;
+
+        // This will traverse though all the item in the cart
+        cart.map((item) => {
             table += `
             <tr>
                    <td>${item.productName}</td>
                    <td>${item.productPrice}</td>
                    <td>${item.productQunatity}</td>
                    <td>${item.productQunatity * item.productPrice}</td>
-                   <td><button class="btn-danger btn-sm">remove</button></td>
+                   <td><button class="btn-danger btn-sm" onclick="deleteItemFromCart(${item.productId})">remove</button></td>
+                   
             </tr>
             `
+            total += item.productPrice * item.productQunatity;
         })
 
-        table += '</table>';
+        table += `<td colspan="5" class="text-right font-weight-bold">Total: ${total}</td>` +
+            '</table>';
 
         $(".cart-body").html(table);
     }
 }
 
+// Delete item
+function deleteItemFromCart(pid) {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+
+    // This will return the item which is not matched with pid
+    let newCart = cart.filter((item)=>item.productId != pid);
+
+    localStorage.setItem('cart', JSON.stringify(newCart));
+
+    updateCart();
+}
+
+// When the document is ready, update the cart
 $(document).ready(function () {
     updateCart();
 })
