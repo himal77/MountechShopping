@@ -210,6 +210,8 @@
     </div>
 </div>
 <%--Modal ended--%>
+
+<%@include file="components/common_modals.jsp" %>
 </body>
 </html>
 

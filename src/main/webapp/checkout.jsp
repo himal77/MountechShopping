@@ -1,10 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: puri
-  Date: 10/13/20
-  Time: 6:04 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%
+    User user = (User)session.getAttribute("current-user");
+    if(user == null){
+        session.setAttribute("message", "you are not registered user");
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -39,19 +41,19 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <input type="email" value="<%=user.getUserEmail()%>" class="form-control" id="exampleInputEmail1"
                                    aria-describedby="emailHelp">
                         </div>
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name">
+                            <input type="text" value="<%=user.getUserName()%>" class="form-control" id="name">
                         </div>
 
                         <div class="form-group">
                             <label for="address">address</label>
                             <textarea class="form-control" name="address" id="address"
-                                      placeholder="Enter your address"></textarea>
+                                      placeholder="Enter your address"><%=user.getUserAddress()%></textarea>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Order now</button>
