@@ -3,6 +3,9 @@
 <%@ page import="com.mountech.mycart.dao.CategoryDAO" %>
 <%@ page import="com.mountech.mycart.helper.FactoryProvider" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.mountech.mycart.dao.ProductDAO" %>
+<%@ page import="com.mountech.mycart.entities.Product" %>
+<%@ page import="com.mountech.mycart.dao.UserDAO" %>
 <%
     User user = (User) session.getAttribute("current-user");
 
@@ -23,6 +26,15 @@
 
         }
     }
+
+    CategoryDAO categoryDAO = new CategoryDAO(FactoryProvider.getFactory());
+    List<Category> categoryList = categoryDAO.getCategoryList();
+
+    ProductDAO productDAO = new ProductDAO(FactoryProvider.getFactory());
+    List<Product> productList = productDAO.getProductList();
+
+    UserDAO userDAO = new UserDAO(FactoryProvider.getFactory());
+    List<User> userList = userDAO.getUserList();
 %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -48,7 +60,7 @@
                     <div class="container">
                         <img class="img-fluid rounded-circle" style="max-width: 100px;" src="image/users.png"/>
                     </div>
-                    <h1>123</h1>
+                    <h1><%=userList.size()%></h1>
                     <h1 class="text-uppercase text-muted">Users</h1>
                 </div>
             </div>
@@ -62,7 +74,7 @@
                     <div class="container">
                         <img class="img-fluid rounded-circle" style="max-width: 100px;" src="image/product.png"/>
                     </div>
-                    <h1>123</h1>
+                    <h1><%=productList.size()%></h1>
                     <h1 class="text-uppercase text-muted">Products</h1>
                 </div>
             </div>
@@ -76,7 +88,7 @@
                     <div class="container">
                         <img style="max-width: 100px;" class="img-fluid rounded-bottom" src="image/category.png"/>
                     </div>
-                    <h1>123</h1>
+                    <h1><%=categoryList.size()%></h1>
                     <h1 class="text-uppercase text-muted">Categories</h1>
                 </div>
             </div>
@@ -179,11 +191,6 @@
                                   placeholder="Enter the description"></textarea>
                     </div>
 
-                    <%--Products category--%>
-                    <%
-                        CategoryDAO categoryDAO = new CategoryDAO(FactoryProvider.getFactory());
-                        List<Category> categoryList = categoryDAO.getCategoryList();
-                    %>
                     <div>
                         <label for="cat">Enter the category</label>
                         <select name="catId" class="form-control" id="cat">
@@ -194,7 +201,6 @@
                         </select>
                     </div>
 
-                    <%--product photo--%>
                     <div class="form-group text-center">
                         <label for="pId">select pic of product</label><br>
                         <input type="file" name="pPhoto" id="pId" required/>

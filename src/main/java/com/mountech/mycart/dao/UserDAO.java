@@ -3,7 +3,12 @@ package com.mountech.mycart.dao;
 import com.mountech.mycart.entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.engine.spi.SessionDelegatorBaseImpl;
 import org.hibernate.query.Query;
+import org.hibernate.query.internal.QueryImpl;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 public class UserDAO {
     private SessionFactory factory;
@@ -30,5 +35,13 @@ public class UserDAO {
         }
 
         return user;
+    }
+
+    public List<User> getUserList() {
+        Session session = factory.openSession();
+        Query query = session.createQuery("from User");
+        List<User> userList = query.list();
+        session.close();
+        return userList;
     }
 }
